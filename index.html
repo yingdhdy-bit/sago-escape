@@ -442,7 +442,7 @@ h1{font-size:clamp(1.5rem,5.2vw,2.05rem);margin:.15em 0 .3em;letter-spacing:-.6p
       <ol class="steps">
         <li><b>1단계 · 서버 만들기</b> — 브라우저에서 <code>script.google.com</code> 을 열고 <b>새 프로젝트</b>를 만든 뒤, 아래 <b>서버 코드 전체</b>를 붙여 넣고 저장하세요. 스프레드시트는 처음 저장할 때 자동으로 만들어집니다.</li>
         <li><b>2단계 · 배포</b> — 오른쪽 위 <b>[배포] → [새 배포]</b> → 유형 <b>웹 앱</b>, 실행 계정 <b>나</b>, 액세스 권한 <b>모든 사용자</b>로 배포하고, 나오는 <b>웹 앱 URL</b>(끝이 <code>/exec</code>)을 복사하세요.</li>
-        <li><b>3단계 · 연결</b> — 위 입력칸에 그 URL을 붙여 넣고 <b>[저장]</b>. 웹에 올려 링크로 나눠 줄 때는 주소 끝에 <code>?api=그URL</code>을 붙여 주면 학생 기기에서도 자동으로 연결됩니다. 파일로만 나눠 줄 때는 이 기기 기록만 표시됩니다.</li>
+        <li><b>3단계 · 연결</b> — 이 파일에는 이미 선생님 반 순위 서버 주소가 기본값으로 들어 있어, 그대로 쓰면 학생 화면과 이 패널이 자동으로 연결됩니다. 다른 서버로 바꾸려면 위 입력칸에 새 URL을 붙여 넣고 <b>[저장]</b>. 주소 끝에 <code>?api=그URL</code>을 붙여 열면 그 기기에도 자동 저장됩니다.</li>
       </ol>
       <div class="tools" style="margin-top:12px">
         <button class="btn ghost sm" id="gsCopy">서버 코드 전체 복사</button>
@@ -600,7 +600,9 @@ function doPost(e) {
   //  비워 두면 이 기기에 저장된 기록만으로 순위를 보여 줍니다.
   //  · 주소 끝에 ?api=https://script.google.com/macros/s/…/exec 를 붙이면 자동 저장됩니다.
   //  · 교사용 패널 [실시간 순위 연동]에서도 저장할 수 있습니다.
-  var SYNC_API_URL = "";
+  //  · 아래 기본 주소가 이미 들어 있어, 이 파일을 열면 자동으로 순위 서버에 연결됩니다.
+  //    (끄거나 다른 서버로 바꾸려면 교사용 패널 [실시간 순위 연동]에서 [연동 끄기] / 새 주소 [저장])
+  var SYNC_API_URL = "https://script.google.com/macros/s/AKfycbyDF6cqTkMrIVg9rSBf8okUz8TU_MM6WWkLhLQ2BB1H8RUNsreMaQrTP4JcdKz93x8/exec";
   var SALT = "mahol-sago-2026";
   var MARKERS = ["①", "②", "③", "④", "⑤", "⑥"];
   var TYPES = { choice: "선택형", multi: "복수 선택", pic: "그림 선택", picmean: "그림+뜻 어휘 선택", short: "단답형", blank: "빈칸형", ox: "O / X", match: "선잇기", order: "순서 배열" };
